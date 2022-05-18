@@ -17,7 +17,7 @@ defaults:
 jobs:
   test_nbgrader:
     runs-on: ${{ matrix.os }}
-    timeout-minutes: 20
+    timeout-minutes: 25
 
     env:
       # NOTE: UTF-8 content may be interpreted as ascii and causes errors
@@ -30,13 +30,15 @@ jobs:
       matrix:
         os: [windows-latest, ubuntu-20.04]
         group: ["docs", "nbextensions", "python"]
-        python: ["3.7", "3.8", "3.9"]
+        python: ["3.7", "3.8", "3.9", "3.10"]
         exclude:
           - os: windows-latest
             group: docs
           - python: "3.7"
             group: docs
           - python: "3.8"
+            group: docs
+          - python: "3.9"
             group: docs
           - python: "3.7"
             group: nbextensions
